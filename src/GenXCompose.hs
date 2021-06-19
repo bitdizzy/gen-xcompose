@@ -128,19 +128,20 @@ instance FoldableWithIndex String Entries where
 instance TraversableWithIndex String Entries where
   itraverse f (Entries es) = fmap Entries $ itraverse f es
 
+--TODO: Handle conflicts where one entry's input sequence is a prefix of another's
 instance Semigroup (Entries s) where
   (Entries e1) <> (Entries e2) = Entries $ Map.unionWithKey (\k -> error $ "Overlap at " ++ k) e1 e2
 
 instance Monoid (Entries s) where
   mempty = Entries mempty
 
-family :: Char -> Entries s -> Entries s
-family c = Entries . Map.mapKeysMonotonic (c:) . unEntries
+family :: String -> Entries s -> Entries s
+family prefix = Entries . Map.mapKeysMonotonic (prefix <>) . unEntries
 
 allEntries :: Entries Symbol
 allEntries = mconcat
   [ -- Superscripts
-    family '^' $ mconcat
+    family "sup" $ mconcat
     [ '1' ## '¹' ? "superscript one"
     , '2' ## '²' ? "superscript two"
     , '3' ## '³' ? "superscript three"
@@ -151,31 +152,73 @@ allEntries = mconcat
     , '8' ## '⁸' ? "superscript eight"
     , '9' ## '⁹' ? "superscript nine"
     , '0' ## '⁰' ? "superscript zero"
+    , 'a' ## 'ᵃ' ? "modifier letter small a"
+    , 'b' ## 'ᵇ' ? "modifier letter small b"
+    , 'c' ## 'ᶜ' ? "modifier letter small c"
+    , 'd' ## 'ᵈ' ? "modifier letter small d"
+    , 'e' ## 'ᵉ' ? "modifier letter small e"
+    , 'f' ## 'ᶠ' ? "modifier letter small f"
+    , 'g' ## 'ᵍ' ? "modifier letter small g"
+    , 'h' ## 'ʰ' ? "modifier letter small h"
+    , 'i' ## 'ⁱ' ? "modifier letter small i"
+    , 'j' ## 'ʲ' ? "modifier letter small j"
+    , 'k' ## 'ᵏ' ? "modifier letter small k"
+    , 'l' ## 'ˡ' ? "modifier letter small l"
+    , 'm' ## 'ᵐ' ? "modifier letter small m"
+    , 'n' ## 'ⁿ' ? "modifier letter small n"
+    , 'o' ## 'ᵒ' ? "modifier letter small o"
+    , 'p' ## 'ᵖ' ? "modifier letter small p"
+    , 'r' ## 'ʳ' ? "modifier letter small r"
+    , 's' ## 'ˢ' ? "modifier letter small s"
+    , 't' ## 'ᵗ' ? "modifier letter small t"
+    , 'u' ## 'ᵘ' ? "modifier letter small u"
+    , 'v' ## 'ᵛ' ? "modifier letter small v"
+    , 'w' ## 'ʷ' ? "modifier letter small w"
+    , 'x' ## 'ˣ' ? "modifier letter small x"
+    , 'y' ## 'ʸ' ? "modifier letter small y"
+    , 'z' ## 'ᶻ' ? "modifier letter small z"
+    ]
+  , -- Subscripts
+    family "sub" $ mconcat
+    [ '0' ## '₀' ? "subscript zero"
+    , '1' ## '₁' ? "subscript one"
+    , '2' ## '₂' ? "subscript two"
+    , '3' ## '₃' ? "subscript three"
+    , '4' ## '₄' ? "subscript four"
+    , '5' ## '₅' ? "subscript five"
+    , '6' ## '₆' ? "subscript six"
+    , '7' ## '₇' ? "subscript seven"
+    , '8' ## '₈' ? "subscript eight"
+    , '9' ## '₉' ? "subscript nine"
+    , 'a' ## 'ₐ' ? "latin subscript small letter a"
+    , 'e' ## 'ₑ' ? "latin subscript small letter e"
+    , 'h' ## 'ₕ' ? "latin subscript small letter h"
+    , 'k' ## 'ₖ' ? "latin subscript small letter k"
+    , 'l' ## 'ₗ' ? "latin subscript small letter l"
+    , 'm' ## 'ₘ' ? "latin subscript small letter m"
+    , 'n' ## 'ₙ' ? "latin subscript small letter n"
+    , 'o' ## 'ₒ' ? "latin subscript small letter o"
+    , 'p' ## 'ₚ' ? "latin subscript small letter p"
+    , 'r' ## 'ᵣ' ? "latin subscript small letter r"
+    , 's' ## 'ₛ' ? "latin subscript small letter s"
+    , 't' ## 'ₜ' ? "latin subscript small letter t"
+    , 'u' ## 'ᵤ' ? "latin subscript small letter u"
+    , 'v' ## 'ᵥ' ? "latin subscript small letter v"
+    , 'x' ## 'ₓ' ? "latin subscript small letter x"
     ]
   , -- Arrows
-    family 'a' $ mconcat
+    family "arr" $ mconcat
     [
     ]
   , -- Relations
-    family 'r' $ mconcat
+    family "rel" $ mconcat
     [ -- Equalities
-      family 'e' $ mconcat
-      [
-      ]
-    , -- Comparisons
-      family 'c' $ mconcat
-      [
-      ]
-    , -- Set theoretic
-      family 's' $ mconcat
-      [
-      ]
     ]
   , -- Operations
-    family 'o' $ mconcat
+    family "op" $ mconcat
     [ mconcat []
     , -- circled operations
-      family 'o' $ mconcat
+      family "o" $ mconcat
       [
       ]
     ]
