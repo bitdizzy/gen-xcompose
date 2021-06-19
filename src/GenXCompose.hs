@@ -25,7 +25,7 @@ data Symbol = Symbol
 
 symbolToEntry :: Symbol -> String
 symbolToEntry s = mconcat
-  [ pure (_symbol_character s)
+  [ "\"", pure (_symbol_character s), "\""
   , " U", pad (showHex (_symbol_codepoint s) "")
   , " # ", _symbol_comment s
   ]
