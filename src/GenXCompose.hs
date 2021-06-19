@@ -142,7 +142,7 @@ family prefix = Entries . Map.mapKeysMonotonic (prefix <>) . unEntries
 allEntries :: Entries Symbol
 allEntries = mconcat
   [ -- Superscripts
-    family "sup" $ mconcat
+    family "-" $ mconcat
     [ "1" ## '¹' ? "superscript one"
     , "2" ## '²' ? "superscript two"
     , "3" ## '³' ? "superscript three"
@@ -180,7 +180,7 @@ allEntries = mconcat
     , "z" ## 'ᶻ' ? "modifier letter small z"
     ]
   , -- Subscripts
-    family "sub" $ mconcat
+    family "_" $ mconcat
     [ "0" ## '₀' ? "subscript zero"
     , "1" ## '₁' ? "subscript one"
     , "2" ## '₂' ? "subscript two"
@@ -415,7 +415,7 @@ allEntries = mconcat
     , "over" ## '⎴' ? ""
     ]
   , -- Relations
-    family "rel" $ mconcat
+    family "r" $ mconcat
     [ "nsim" ## '≁' ? ""
     , "neq" ## '≠' ? ""
     , "app" ## '≈' ? ""
@@ -444,7 +444,7 @@ allEntries = mconcat
     , "btimes" ## '⊠' ? ""
     ]
   , -- Set
-    family "set" $ mconcat
+    family "s" $ mconcat
     [ "nil" ## '∅' ? ""
     , "in" ## '∈' ? ""
     , "nin" ## '∉' ? ""
