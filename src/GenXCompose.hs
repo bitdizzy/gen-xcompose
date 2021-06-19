@@ -45,6 +45,8 @@ infixr 0 ##
 (##) :: String -> Symbol -> Entries Symbol
 k ## sym = Entries $ Map.singleton k sym
 
+--TODO: Handle conflicts where one entry's input sequence is a prefix of another's
+-- by using a prefix tree structure
 newtype Entries s = Entries { unEntries :: Map String s }
 
 stringToKeySequence :: (Char -> r) -> (String -> r) -> String ->  r
@@ -128,7 +130,6 @@ instance FoldableWithIndex String Entries where
 instance TraversableWithIndex String Entries where
   itraverse f (Entries es) = fmap Entries $ itraverse f es
 
---TODO: Handle conflicts where one entry's input sequence is a prefix of another's
 instance Semigroup (Entries s) where
   (Entries e1) <> (Entries e2) = Entries $ Map.unionWithKey (\k -> error $ "Overlap at " ++ k) e1 e2
 
@@ -378,16 +379,101 @@ allEntries = mconcat
     , "-o" ## '⊸' ? "multimap"
     , "o-" ## '⟜' ? "left multimap"
     ]
+  , -- Logic
+    family "l" $ mconcat
+    [ "not" ## '¬' ? ""
+    , "all" ## '∀' ? ""
+    , "ex" ## '∃' ? ""
+    , "nex" ## '∄' ? ""
+    , "and" ## '∧' ? ""
+    , "or" ## '∨' ? ""
+    , "tee" ## '⊢' ? ""
+    , "ltee" ## '⊣' ? ""
+    , "top" ## '⊤' ? ""
+    , "bot" ## '⊥' ? ""
+    , "dtee" ## '⊨' ? ""
+    , "ntee" ## '⊬' ? ""
+    , "dai" ## '✠' ? ""
+    , "pi" ## '∏' ? ""
+    , "sig" ## '∑' ? ""
+    , "cop" ## '∐' ? ""
+    , "par" ## '⅋' ? ""
+    ]
+  , -- Brackets
+    family "b" $ mconcat
+    [ "ulc" ## '⌜' ? ""
+    , "urc" ## '⌝' ? ""
+    , "dlc" ## '⌞' ? ""
+    , "drc" ## '⌟' ? ""
+    , "lang" ## '⟨' ? ""
+    , "rang" ## '⟩' ? ""
+    , "Lang" ## '⟪' ? ""
+    , "Rang" ## '⟫' ? ""
+    , "lsq" ## '⟦' ? ""
+    , "rsq" ## '⟧' ? ""
+    , "under" ## '⎵' ? ""
+    , "over" ## '⎴' ? ""
+    ]
   , -- Relations
     family "rel" $ mconcat
-    [ -- Equalities
+    [ "nsim" ## '≁' ? ""
+    , "neq" ## '≠' ? ""
+    , "app" ## '≈' ? ""
+    , "iso" ## '≅' ? ""
+    , "cong" ## '≡' ? ""
+    -- Based sarah found this
+    , "coh" ## '⁐' ? ""
+    , "scoh" ## '⌢' ? ""
+    , "ncoh" ## '≍' ? ""
+    , "sncoh" ## '⌣' ? ""
+    , "le" ## '≤' ? ""
+    , "ge" ## '≥' ? ""
+    , "qeq" ## '≟' ? ""
+    , "teq" ## '≜' ? ""
     ]
   , -- Operations
-    family "op" $ mconcat
-    [ mconcat []
-    , -- circled operations
-      family "o" $ mconcat
-      [
-      ]
+    family "o" $ mconcat
+    [ "times" ## '×' ? ""
+    , "div" ## '÷' ? ""
+    , "ltimes" ## '⋉' ? ""
+    , "rtimes" ## '⋊' ? ""
+    , "pfork" ## '⋔' ? ""
+    , "oplus" ## '⊕' ? ""
+    , "otimes" ## '⊗' ? ""
+    , "bplus" ## '⊞' ? ""
+    , "btimes" ## '⊠' ? ""
     ]
+  , -- Set
+    family "set" $ mconcat
+    [ "nil" ## '∅' ? ""
+    , "in" ## '∈' ? ""
+    , "nin" ## '∉' ? ""
+    , "has" ## '∋' ? ""
+    , "nhas" ## '∌' ? ""
+    , "cap" ## '∩' ? ""
+    , "cup" ## '∪' ? ""
+    , "sub" ## '⊂' ? ""
+    , "sup" ## '⊃' ? ""
+    , "nsub" ## '⊄' ? ""
+    , "nsup" ## '⊅' ? ""
+    , "esub" ## '⊆' ? ""
+    , "esup" ## '⊇' ? ""
+    , "nesub" ## '⊈' ? ""
+    , "nesup" ## '⊉' ? ""
+    , "ssub" ## '⊊' ? ""
+    , "ssup" ## '⊋' ? ""
+    , "bsub" ## '⊏' ? ""
+    , "bsup" ## '⊐' ? ""
+    , "ebsub" ## '⊑' ? ""
+    , "ebsup" ## '⊒' ? ""
+    , "nbsub" ## '⋢' ? ""
+    , "nbsup" ## '⋣' ? ""
+    ]
+  , -- Misc
+    family "m" $ mconcat
+    [ "nab" ## '∇' ? ""
+    , "inf" ## '∞' ? ""
+    , "dag" ## '†' ? ""
+    ]
+  -- TODO: Calculus
   ]
