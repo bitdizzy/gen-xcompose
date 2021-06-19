@@ -1,4 +1,7 @@
-{ callCabal2nix
+{ pkgs ? (import <nixpkgs> {})
 }:
 
-callCabal2nix "gen-xcompose" ./. {}
+rec {
+  pkg = pkgs.haskellPackages.callPackage ./package.nix {};
+  output = import ./output.nix { inherit (pkgs) runCommand; gen-xcompose = pkg; };
+}
