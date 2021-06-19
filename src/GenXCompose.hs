@@ -209,7 +209,7 @@ allEntries = mconcat
     , "x" ## 'ₓ' ? "latin subscript small letter x"
     ]
   , --
-    family "ss" $ mconcat
+    family "bs" $ mconcat
     [ "A" ## '𝒜' ? "mathematical script capital A"
     , "B" ## 'ℬ' ? "mathematical script capital B"
     , "C" ## '𝒞' ? "mathematical script capital C"
