@@ -381,7 +381,6 @@ allEntries = mconcat
     , "L" ## '⟜' ? "left multimap"
     ]
     -- Logic
-  , "&" ## '⅋' ? ""
   , family "l" $ mconcat
     [ "n" ## '¬' ? ""
     , "a" ## '∀' ? ""
@@ -399,6 +398,7 @@ allEntries = mconcat
     , "A" ## '∏' ? ""
     , "C" ## '∐' ? ""
     , "E" ## '∑' ? ""
+    , "p" ## '⅋' ? ""
     ]
     -- Brackets
   , "," ## '⟨' ? ""
