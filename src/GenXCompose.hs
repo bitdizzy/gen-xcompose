@@ -210,7 +210,7 @@ allEntries = mconcat
     , "x" ## 'ₓ' ? "latin subscript small letter x"
     ]
   , --
-    family "b" $ mconcat
+    family ";" $ mconcat
     [ "A" ## '𝒜' ? "mathematical script capital A"
     , "B" ## 'ℬ' ? "mathematical script capital B"
     , "C" ## '𝒞' ? "mathematical script capital C"
@@ -265,7 +265,7 @@ allEntries = mconcat
     , "z" ## '𝓏' ? "mathematical script small z"
     ]
   , -- Blackboard
-    family "B" $ mconcat
+    family ":" $ mconcat
     [ "A" ## '𝔸' ? "mathematical double-struck capital A"
     , "B" ## '𝔹' ? "mathematical double-struck capital B"
     , "C" ## 'ℂ' ? "double-struck capital C"
@@ -320,7 +320,7 @@ allEntries = mconcat
     , "z" ## '𝕫' ? "mathematical double-struck small a"
     ]
   , -- Greek letters
-    family "g" $ mconcat
+    family "q" $ mconcat
     [ "G" ## 'Γ' ? "greek capital letter gamma"
     , "D" ## 'Δ' ? "greek capital letter gamma"
     , "Th" ## 'Θ' ? "greek capital letter gamma"
@@ -381,7 +381,7 @@ allEntries = mconcat
     , "L" ## '⟜' ? "left multimap"
     ]
     -- Logic
-  , family "l" $ mconcat
+  , family "'" $ mconcat
     [ "n" ## '¬' ? ""
     , "a" ## '∀' ? ""
     , "e" ## '∃' ? ""
@@ -426,13 +426,17 @@ allEntries = mconcat
     , ":" ## '≕' ? ""
     ]
   , -- Relations
-    family "r" $ mconcat
+    family "e" $ mconcat
     [ "c" ## '⁐' ? ""
     , "C" ## '⌢' ? ""
     , "n" ## '≍' ? ""
     , "N" ## '⌣' ? ""
     , "l" ## '≤' ? ""
     , "g" ## '≥' ? ""
+    , "," ## '⊲' ? ""
+    , "." ## '⊳' ? ""
+    , "<" ## '⋪' ? ""
+    , ">" ## '⋫' ? ""
     ]
     -- Operations
   , "x" ## '×' ? ""
@@ -447,14 +451,14 @@ allEntries = mconcat
     , "X" ## '⊠' ? ""
     ]
   , -- Set
-    family "s" $ mconcat
+    family "u" $ mconcat
     [ "n" ## '∅' ? ""
     , "e" ## '∈' ? ""
     , "E" ## '∉' ? ""
     , "h" ## '∋' ? ""
     , "H" ## '∌' ? ""
-    , "i" ## '∩' ? ""
-    , "u" ## '∪' ? ""
+    , "a" ## '∩' ? ""
+    , "o" ## '∪' ? ""
     , "," ## '⊂' ? ""
     , "." ## '⊃' ? ""
     , "<" ## '⊄' ? ""
@@ -463,17 +467,17 @@ allEntries = mconcat
     , "0" ## '⊇' ? ""
     , "(" ## '⊈' ? ""
     , ")" ## '⊉' ? ""
-    , "w" ## '⊊' ? ""
-    , "v" ## '⊋' ? ""
-    , "W" ## '⊏' ? ""
-    , "V" ## '⊐' ? ""
+    , "'" ## '⊊' ? ""
+    , "\"" ## '⊋' ? ""
+    , "w" ## '⊏' ? ""
+    , "v" ## '⊐' ? ""
     , "[" ## '⊑' ? ""
     , "]" ## '⊒' ? ""
     , "{" ## '⋢' ? ""
     , "}" ## '⋣' ? ""
     ]
   , -- Misc
-    family "m" $ mconcat
+    family "Q" $ mconcat
     [ "nab" ## '∇' ? ""
     , "inf" ## '∞' ? ""
     , "dag" ## '†' ? ""
