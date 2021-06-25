@@ -318,6 +318,16 @@ allEntries = mconcat
     , "x" ## '𝕩' ? "mathematical double-struck small a"
     , "y" ## '𝕪' ? "mathematical double-struck small a"
     , "z" ## '𝕫' ? "mathematical double-struck small a"
+    , "0" ## '𝟘' ? "mathematical double-struck small zero"
+    , "1" ## '𝟙' ? "mathematical double-struck small one"
+    , "2" ## '𝟚' ? "mathematical double-struck small two"
+    , "3" ## '𝟛' ? "mathematical double-struck small three"
+    , "4" ## '𝟜' ? "mathematical double-struck small four"
+    , "5" ## '𝟝' ? "mathematical double-struck small five"
+    , "6" ## '𝟞' ? "mathematical double-struck small six"
+    , "7" ## '𝟟' ? "mathematical double-struck small seven"
+    , "8" ## '𝟠' ? "mathematical double-struck small eight"
+    , "9" ## '𝟡' ? "mathematical double-struck small nine"
     ]
   , -- Greek letters
     family "q" $ mconcat
