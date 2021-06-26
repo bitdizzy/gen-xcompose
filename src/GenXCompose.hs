@@ -459,6 +459,7 @@ allEntries = mconcat
     , "O" ## '⊠' ? ""
     , "e" ## '⋉' ? ""
     , "E" ## '⋊' ? ""
+    , "." ## '∘' ? "ring operator"
     ]
   , -- Set
     family "u" $ mconcat
