@@ -393,6 +393,7 @@ allEntries = mconcat
     -- Logic
   , family "'" $ mconcat
     [ "n" ## '¬' ? ""
+    , "N" ## '┴' ? ""
     , "a" ## '∀' ? ""
     , "e" ## '∃' ? ""
     , "x" ## '∄' ? ""
