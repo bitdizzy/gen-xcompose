@@ -179,6 +179,8 @@ allEntries = mconcat
     , "x" ## 'ˣ' ? "modifier letter small x"
     , "y" ## 'ʸ' ? "modifier letter small y"
     , "z" ## 'ᶻ' ? "modifier letter small z"
+    , "-" ## '—' ? "em-dash"
+    , "_" ## '–' ? "en-dash"
     ]
   , -- Subscripts
     family "_" $ mconcat
